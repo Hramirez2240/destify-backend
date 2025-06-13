@@ -69,7 +69,7 @@ export class MovieService {
       });
       if (!movie)
         throw new InternalServerErrorException(`Movie with id ${id} not found`);
-      if (dto.actors.length > 0) {
+      if (dto.actors && dto.actors.length > 0) {
         const actors = await this.getActors(dto.actors);
         movie.actors = actors;
       }
@@ -121,8 +121,8 @@ export class MovieService {
   }
 
   private mapDtoToEntity(dto: CreateMovieDto | UpdateMovieDto): Partial<Movie> {
-    const { title, description, releaseDate, genre, duration, director } = dto;
-    return { title, description, releaseDate, genre, duration, director };
+    const { title, description, releaseDate, genre, duration, director, image } = dto;
+    return { title, description, releaseDate, genre, duration, director, image };
   }
 
   private async getActors(actorsId: number[]): Promise<Actor[]> {

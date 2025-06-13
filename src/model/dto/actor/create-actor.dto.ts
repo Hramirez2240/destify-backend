@@ -1,4 +1,4 @@
-import { IsDateString, IsNotEmpty, IsString } from "class-validator";
+import { IsDateString, IsNotEmpty, IsOptional, IsString } from "class-validator";
 
 export class CreateActorDto{
     @IsString()
@@ -16,4 +16,7 @@ export class CreateActorDto{
     @IsString()
     @IsNotEmpty()
     nationality: string;
+
+    @IsOptional()
+    image: string;
 }

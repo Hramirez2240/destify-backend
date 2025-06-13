@@ -16,8 +16,11 @@ export class Actor extends BaseEntity {
   @Column()
   nationality: string;
 
-  @ManyToMany(() => Movie, movie => movie.actors)
+  @ManyToMany(() => Movie, (movie) => movie.actors)
   movies?: Movie[];
+
+  @Column({ nullable: true })
+  image: string;
 
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;

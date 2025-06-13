@@ -33,4 +33,7 @@ export class Movie extends BaseEntity{
         inverseJoinColumn: { name: 'actor_id', referencedColumnName: 'id' }
     })
     actors?: Actor[];
+
+    @Column({  nullable: true })
+    image: string;
 }
